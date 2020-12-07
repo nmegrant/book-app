@@ -1,8 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-export default function Home({ data }) {
-  console.log(data);
+export default function Home({ books }) {
+  console.log(books);
   return (
     <div className={styles.container}>
       <Head>
@@ -14,10 +14,12 @@ export default function Home({ data }) {
         <h1 className={styles.title}>Welcome to my book!</h1>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          {books.items.map((book) => (
+            <div className={styles.card} key={book.id}>
+              <h3>{book.volumeInfo.title}</h3>
+              <p>{book.volumeInfo.description}</p>
+            </div>
+          ))}
         </div>
       </main>
     </div>
@@ -28,9 +30,9 @@ export async function getStaticProps(context) {
   const res = await fetch(
     `https://www.googleapis.com/books/v1/volumes?q=inauthor:Terry+Pratchett`
   );
-  const data = await res.json();
+  const books = await res.json();
 
-  if (!data) {
+  if (!books) {
     return {
       notFound: true,
     };
@@ -38,7 +40,7 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      data,
+      books,
     }, // will be passed to the page component as props
   };
 }

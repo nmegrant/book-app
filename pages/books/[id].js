@@ -17,6 +17,8 @@ export default function BookPage() {
     setBook(book);
   }, []);
 
+  console.log(book);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -29,8 +31,8 @@ export default function BookPage() {
 
         <div className={styles.grid}>
           <div className={styles.card}>
-            <h3>{book.items[0].volumeInfo.title}</h3>
-            <p>{book.items[0].volumeInfo.description}</p>
+            <h3>{book && book.items[0].volumeInfo.title}</h3>
+            <p>{book && book.items[0].volumeInfo.description}</p>
           </div>
         </div>
       </main>

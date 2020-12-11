@@ -3,7 +3,6 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
 export default function Home({ books }) {
-  console.log(books);
   return (
     <div className={styles.container}>
       <Head>

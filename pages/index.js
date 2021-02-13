@@ -1,8 +1,7 @@
 import Head from "next/head";
-import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
-export default function Home({ books }) {
+export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -11,10 +10,10 @@ export default function Home({ books }) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome Nile! A site for book sellers and buyers
-        </h1>
-
+        <h1 className={styles.title}>Welcome to Nile!</h1>
+        <h3 className={styles.description}>
+          A site for book sellers and buyers
+        </h3>
         <div className={styles.grid}></div>
       </main>
     </div>

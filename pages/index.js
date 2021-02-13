@@ -5,12 +5,14 @@ export default function Home({ books }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>My Book App</title>
+        <title>Nile (for book sellers and buyers)</title>
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to my book!</h1>
+        <h1 className={styles.title}>
+          Welcome Nile! A site for book sellers and buyers
+        </h1>
 
         <div className={styles.grid}></div>
       </main>

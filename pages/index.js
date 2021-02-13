@@ -12,34 +12,8 @@ export default function Home({ books }) {
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to my book!</h1>
 
-        <div className={styles.grid}>
-          {books.items.map((book) => (
-            <div className={styles.card} key={book.id}>
-              <h3>{book.volumeInfo.title}</h3>
-              <p>{book.volumeInfo.description}</p>
-            </div>
-          ))}
-        </div>
+        <div className={styles.grid}></div>
       </main>
     </div>
   );
-}
-
-export async function getStaticProps(context) {
-  const res = await fetch(
-    `https://www.googleapis.com/books/v1/volumes?q=inauthor:Terry+Pratchett`
-  );
-  const books = await res.json();
-
-  if (!books) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      books,
-    }, // will be passed to the page component as props
-  };
 }

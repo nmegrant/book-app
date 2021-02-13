@@ -5,7 +5,7 @@ export default function Checkout() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Browser for Books</title>
+        <title>Checkout</title>
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 

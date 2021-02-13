@@ -1,17 +1,25 @@
 .header {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
+  background-color: rgba(182, 140, 184, 0.2);
+  z-index: 10;
 }
 
 .navItem {
-  padding: 1rem 2rem;
+  padding: 1rem 3rem;
+  color: rgb(10, 15, 13);
 }
 
 .navItem:hover {
-  background-color: rgba(182, 140, 184, 0.5);
-  padding: 1rem 2rem;
+  background-color: rgba(182, 140, 184, 0.3);
+  padding: 1rem 3.5rem;
+  transition: background-color, 0.1s, ease-in, 1s;
+}
+
+.navItem:active {
+  color: white;
 }

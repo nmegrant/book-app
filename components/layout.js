@@ -1,9 +1,14 @@
 import Link from "next/link";
 import styles from "./layout.module.css";
+import Head from "next/head";
 
 export default function Layout({ children }) {
   return (
     <div>
+      <Head>
+        <title>Nile (for book sellers and buyers)</title>
+        <link rel="icon" href="/beach-read.JPG" />
+      </Head>
       <div className={styles.header}>
         <Link href="/">
           <a className={styles.navItem}>Main Page</a>

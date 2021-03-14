@@ -5,8 +5,7 @@ export default function Browse() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Browser for Books</title>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
+        <title>Nile - Browser for Books</title>
       </Head>
 
       <main className={styles.main}>

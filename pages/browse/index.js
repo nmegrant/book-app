@@ -1,5 +1,6 @@
 import Head from "next/head";
-import styles from "../../styles/Home.module.css";
+import styles from "../../styles/home.module.css";
+import BookCard from "../../components/bookCard";
 
 export default function Browse(props) {
   const books = props.data || [];
@@ -15,7 +16,19 @@ export default function Browse(props) {
           Filter by genre or search by author/title
         </h3>
         <div className={styles.grid}>
-          {books && books.map((book) => <div>{book.title}</div>)}
+          {books &&
+            books.map((book) => (
+              <BookCard
+                key={book.title}
+                title={book.title}
+                author={book.author}
+                description={book.description}
+                genre={book.genre}
+                price={book.price}
+                stock={book.stock}
+                rating={book.rating}
+              />
+            ))}
         </div>
       </main>
     </div>

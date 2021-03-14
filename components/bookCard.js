@@ -1,4 +1,4 @@
-import styles from "../styles/bookcard.module.css";
+import styles from "../styles/home.module.css";
 
 export default function BookCard({
   title,

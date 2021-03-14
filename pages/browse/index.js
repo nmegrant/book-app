@@ -1,7 +1,8 @@
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 
-export default function Browse() {
+export default function Browse(props) {
+  const books = props.data || [];
   return (
     <div className={styles.container}>
       <Head>
@@ -13,8 +14,25 @@ export default function Browse() {
         <h3 className={styles.description}>
           Filter by genre or search by author/title
         </h3>
-        <div className={styles.grid}></div>
+        <div className={styles.grid}>
+          {books && books.map((book) => <div>{book.title}</div>)}
+        </div>
       </main>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch(`http://localhost:3000/api/books`);
+  const data = await res.json();
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { data },
+  };
 }

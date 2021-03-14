@@ -49,3 +49,7 @@ const books = [
     rating: 5,
   },
 ];
+
+export default function handler(req, res) {
+  res.status(200).json(books);
+}

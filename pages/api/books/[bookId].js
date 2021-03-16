@@ -56,6 +56,9 @@ const books = [
 ];
 
 export default function handler(req, res) {
-  const book = books.find((book) => book.id === id);
-  res.status(200).json(book);
+  const { bookId } = req.query;
+  const book = books.find((book) => {
+    return book.id.toString() === bookId;
+  });
+  return res.status(200).json(book);
 }

@@ -3,11 +3,6 @@ import { useRouter } from "next/router";
 import styles from "../../styles/home.module.css";
 
 export default function Book({ book }) {
-  console.log(book);
-  const router = useRouter();
-  const {
-    query: { bookId },
-  } = router;
   return (
     <div className={styles.container}>
       <Head>
@@ -17,9 +12,11 @@ export default function Book({ book }) {
         <h1 className={styles.title}>{book.title}</h1>
         <h5>by {book.author}</h5>
         <h3 className={styles.description}>{book.description}</h3>
-        <p>${book.price}</p>
-        <p>{book.rating}</p>
-        <p>{book.stock}</p>
+        <div className={styles.bookInfo}>
+          <p>${book.price}</p>
+          <p>rating: {book.rating}</p>
+          <p>stock: {book.stock}</p>
+        </div>
         <div className={styles.grid}></div>
       </main>
     </div>

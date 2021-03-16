@@ -15,7 +15,11 @@ export default function Book({ book }) {
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>{book.title}</h1>
+        <h5>by {book.author}</h5>
         <h3 className={styles.description}>{book.description}</h3>
+        <p>${book.price}</p>
+        <p>{book.rating}</p>
+        <p>{book.stock}</p>
         <div className={styles.grid}></div>
       </main>
     </div>

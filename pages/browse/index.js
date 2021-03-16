@@ -9,7 +9,6 @@ export default function Browse(props) {
       <Head>
         <title>Nile - Browser for Books</title>
       </Head>
-
       <main className={styles.main}>
         <h1 className={styles.title}>Browse for books</h1>
         <h3 className={styles.description}>
@@ -19,7 +18,8 @@ export default function Browse(props) {
           {books &&
             books.map((book) => (
               <BookCard
-                key={book.title}
+                key={book.id}
+                id={book.id}
                 title={book.title}
                 author={book.author}
                 description={book.description}

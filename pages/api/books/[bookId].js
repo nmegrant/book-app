@@ -56,5 +56,6 @@ const books = [
 ];
 
 export default function handler(req, res) {
-  res.status(200).json(books);
+  const book = books.find((book) => book.id === id);
+  res.status(200).json(book);
 }

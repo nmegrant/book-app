@@ -5,7 +5,7 @@ import styles from "../../styles/home.module.css";
 export default function Browse() {
   const router = useRouter();
   const {
-    query: { id },
+    query: { bookId },
   } = router;
   return (
     <div className={styles.container}>

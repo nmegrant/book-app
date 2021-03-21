@@ -7,6 +7,14 @@
   align-items: center;
 }
 
+.smcontainer {
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .bookInfo {
   display: flex;
   flex-direction: row;
@@ -126,4 +134,9 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.link {
+  color: rgb(49, 76, 182);
+  cursor: alias;
 }

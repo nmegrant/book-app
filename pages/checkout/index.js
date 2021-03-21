@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { CheckOutContext } from "../../state/CheckOutContext";
+import CheckoutItem from "../../components/CheckoutItem";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/home.module.css";
@@ -32,12 +33,7 @@ export default function Checkout() {
             <div className={styles.smcontainer}>
               <h3>Your basket</h3>
               {state.map((book) => (
-                <div className={styles.smcontainer} key={book.id}>
-                  <p>{book.title}</p>
-                  <p>By {book.author}</p>
-                  <p>Price {book.price}</p>
-                  <p>Quantity: {book.quantity}</p>
-                </div>
+                <CheckoutItem key={book.id} book={book} />
               ))}
             </div>
           )}

@@ -2,7 +2,7 @@ import styles from "../styles/home.module.css";
 
 export default function CheckoutItem({ book }) {
   return (
-    <div className={styles.smcontainer}>
+    <div className={styles.itemcontainer}>
       <h2>Item</h2>
       <h3>{book.title}</h3>
       <h4>By: {book.author}</h4>

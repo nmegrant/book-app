@@ -29,9 +29,12 @@ export default function Checkout() {
             </>
           )}
           {state.length > 0 && (
-            <>
+            <div className={styles.grid}>
               <h3>Your basket</h3>
-            </>
+              {state.map((book) => (
+                <p key={book.id}>{book.title}</p>
+              ))}
+            </div>
           )}
         </div>
       </main>

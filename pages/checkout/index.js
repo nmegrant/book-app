@@ -32,7 +32,10 @@ export default function Checkout() {
             <div className={styles.grid}>
               <h3>Your basket</h3>
               {state.map((book) => (
-                <p key={book.id}>{book.title}</p>
+                <div className={styles.grid} key={book.id}>
+                  <p>{book.title}</p>
+                  <p>{book.quantity}</p>
+                </div>
               ))}
             </div>
           )}

@@ -28,6 +28,11 @@ export default function Checkout() {
               </p>
             </>
           )}
+          {state.length > 0 && (
+            <>
+              <h3>Your basket</h3>
+            </>
+          )}
         </div>
       </main>
     </div>

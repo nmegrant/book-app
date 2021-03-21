@@ -1,7 +1,7 @@
 import React, { useMemo, useReducer } from "react";
 import Layout from "../components/layout";
 import { checkoutReducer, initialState } from "../state/checkoutReducer";
-import { CheckOutContext } from "../state/CheckoutContext";
+import { CheckOutContext } from "../state/CheckOutContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {

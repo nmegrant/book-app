@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CheckOutContext } from "../../state/CheckoutContext";
+import { CheckOutContext } from "../../state/CheckOutContext";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/home.module.css";

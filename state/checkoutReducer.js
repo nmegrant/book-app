@@ -1,4 +1,4 @@
-export const initialState = ["test"];
+export const initialState = [];
 
 export function checkoutReducer(state, action) {
   switch (action.type) {

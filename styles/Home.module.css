@@ -127,3 +127,8 @@
     flex-direction: column;
   }
 }
+
+.link {
+  color: rgb(49, 76, 182);
+  cursor: alias;
+}

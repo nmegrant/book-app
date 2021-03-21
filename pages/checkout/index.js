@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { CheckOutContext } from "../../state/CheckoutContext";
 import Head from "next/head";
+import Link from "next/link";
 import styles from "../../styles/home.module.css";
 
 export default function Checkout() {
   const { state, dispatch } = useContext(CheckOutContext);
-
-  console.log(state);
 
   return (
     <div className={styles.container}>
@@ -16,7 +15,20 @@ export default function Checkout() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Checkout</h1>
-        <div className={styles.grid}></div>
+        <div className={styles.grid}>
+          {state.length === 0 && (
+            <>
+              <h3>You have no books in your basket.</h3>
+              <p>
+                <Link href={`/browse/`}>
+                  <span className={styles.link}>Browse our selection</span>
+                </Link>{" "}
+                and add books to your basket, then come back here to complete
+                the purchase.
+              </p>
+            </>
+          )}
+        </div>
       </main>
     </div>
   );

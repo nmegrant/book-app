@@ -1,11 +1,22 @@
+import React, { useMemo, useReducer } from "react";
 import Layout from "../components/layout";
+import { checkoutReducer, initialState } from "../state/checkoutReducer";
+import { CheckOutContext } from "../state/CheckoutContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
+  const [state, dispatch] = useReducer(checkoutReducer, initialState);
+
+  const contextValue = useMemo(() => {
+    return { state, dispatch };
+  }, [state, dispatch]);
+
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <CheckOutContext.Provider value={contextValue}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </CheckOutContext.Provider>
   );
 }
 

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../../styles/home.module.css";
-import BookCard from "../../components/bookCard";
+import BookCard from "../../components/BookCard";
 
 export default function Browse(props) {
   const books = props.data || [];

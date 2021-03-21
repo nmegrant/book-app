@@ -29,12 +29,14 @@ export default function Checkout() {
             </>
           )}
           {state.length > 0 && (
-            <div className={styles.grid}>
+            <div className={styles.smcontainer}>
               <h3>Your basket</h3>
               {state.map((book) => (
-                <div className={styles.grid} key={book.id}>
+                <div className={styles.smcontainer} key={book.id}>
                   <p>{book.title}</p>
-                  <p>{book.quantity}</p>
+                  <p>By {book.author}</p>
+                  <p>Price {book.price}</p>
+                  <p>Quantity: {book.quantity}</p>
                 </div>
               ))}
             </div>

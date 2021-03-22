@@ -15,7 +15,14 @@ export function checkoutReducer(state, action) {
       }
       return [...state, { ...action.payload, quantity: 1 }];
     case "REMOVE":
-      return [...state, action.payload];
+      const newState = [...state].map((book) => {
+        if (book.title === action.payload.title) {
+          return { ...book, quantity: book.quantity - 1 };
+        }
+        return book;
+      });
+      const finalState = [...newState].filter((book) => book.quantity > 0);
+      return [...finalState];
     default:
       return state;
   }

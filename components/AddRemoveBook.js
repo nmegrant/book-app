@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { CheckOutContext } from "../state/CheckOutContext";
 
-export default function AddBook({ book }) {
+export default function AddRemoveBook({ book }) {
   const { state, dispatch } = useContext(CheckOutContext);
 
   return (

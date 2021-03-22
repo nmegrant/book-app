@@ -1,5 +1,5 @@
 import Head from "next/head";
-import AddBook from "../../components/AddBook";
+import AddRemoveBook from "../../components/AddRemoveBook";
 import styles from "../../styles/home.module.css";
 
 export default function Book({ book }) {
@@ -19,7 +19,7 @@ export default function Book({ book }) {
             <p>stock: {book.stock}</p>
           </div>
         </div>
-        <AddBook book={book} />
+        <AddRemoveBook book={book} />
       </main>
     </div>
   );

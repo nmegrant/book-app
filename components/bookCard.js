@@ -1,4 +1,4 @@
-import AddBook from "../components/AddBook";
+import AddRemoveBook from "../components/AddRemoveBook";
 import styles from "../styles/home.module.css";
 import Link from "next/link";
 
@@ -24,7 +24,7 @@ export default function BookCard({
           <h5>rating: {rating}/5</h5>
         </div>
       </Link>
-      <AddBook book={book} />
+      <AddRemoveBook book={book} />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import AddRemoveBook from "../components/AddRemoveBook";
 import styles from "../styles/home.module.css";
 
 export default function CheckoutItem({ book }) {
@@ -9,6 +10,7 @@ export default function CheckoutItem({ book }) {
           <th className={styles.cell}>Price</th>
           <th className={styles.cell}>Quantity</th>
           <th className={styles.cell}>Total</th>
+          <th></th>
         </tr>
         <tr>
           <td className={styles.cell}>{book.title}</td>
@@ -20,6 +22,9 @@ export default function CheckoutItem({ book }) {
           </td>
           <td rowspan="2" className={styles.cell}>
             {book.price * book.quantity}
+          </td>
+          <td className={styles.cell}>
+            <AddRemoveBook book={book} />
           </td>
         </tr>
         <tr>

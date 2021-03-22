@@ -150,10 +150,11 @@
 
 .table {
   border: 1px solid rgb(10, 15, 13);
-  width: 500px;
-  padding: 10px 20px 10px 20px;
+  width: 700px;
+  padding: 10px;
 }
 
 .cell {
   text-align: center;
+  padding: 5px;
 }

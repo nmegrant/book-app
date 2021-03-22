@@ -147,3 +147,13 @@
   color: rgb(49, 76, 182);
   cursor: alias;
 }
+
+.table {
+  border: 1px solid rgb(10, 15, 13);
+  width: 500px;
+  padding: 10px 20px 10px 20px;
+}
+
+.cell {
+  text-align: center;
+}

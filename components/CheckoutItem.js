@@ -15,13 +15,19 @@ export default function CheckoutItem({ book }) {
         <tr>
           <td className={styles.cell}>{book.title}</td>
           <td rowspan="2" className={styles.cell}>
-            ${book.price}
+            {new Intl.NumberFormat("nl-NL", {
+              style: "currency",
+              currency: "EUR",
+            }).format(book.price)}
           </td>
           <td rowspan="2" className={styles.cell}>
             {book.quantity}
           </td>
           <td rowspan="2" className={styles.cell}>
-            {book.price * book.quantity}
+            {new Intl.NumberFormat("nl-NL", {
+              style: "currency",
+              currency: "EUR",
+            }).format(book.price * book.quantity)}
           </td>
           <td className={styles.cell}>
             <AddRemoveBook book={book} />

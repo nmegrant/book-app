@@ -112,6 +112,7 @@
   border: 1px solid rgb(100, 97, 160);
   border-radius: 10px;
   transition: color 0.55s ease, border-color 0.55s ease;
+  cursor: pointer;
 }
 
 .card:hover,

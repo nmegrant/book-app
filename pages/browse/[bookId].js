@@ -14,7 +14,12 @@ export default function Book({ book }) {
           <h5>by {book.author}</h5>
           <h3 className={styles.description}>{book.description}</h3>
           <div className={styles.bookInfo}>
-            <p>${book.price}</p>
+            <p>
+              {new Intl.NumberFormat("nl-NL", {
+                style: "currency",
+                currency: "EUR",
+              }).format(book.price)}
+            </p>
             <p>rating: {book.rating}</p>
             <p>stock: {book.stock}</p>
           </div>

@@ -115,6 +115,13 @@
   cursor: pointer;
 }
 
+.cardFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .card:hover,
 .card:focus,
 .card:active {

@@ -31,8 +31,10 @@ export default function BookCard({
           <h5>rating: {rating}/5</h5>
         </div>
       </Link>
-      <AddRemoveBook book={book} />
-      <DisplayQty book={book} />
+      <div className={styles.cardFooter}>
+        <AddRemoveBook book={book} />
+        <DisplayQty book={book} />
+      </div>
     </div>
   );
 }

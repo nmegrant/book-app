@@ -8,7 +8,7 @@ export default function DisplayQty({ book }) {
 
   return (
     <div>
-      <p>In Basket: {current ? current.quantity : "0"}</p>
+      <h5>In Basket: {current ? current.quantity : "0"}</h5>
     </div>
   );
 }

@@ -5,6 +5,8 @@ import styles from "../styles/home.module.css";
 export default function AddRemoveBook({ book }) {
   const { state, dispatch } = useContext(CheckOutContext);
 
+  const index = state.findIndex((stateBook) => stateBook.title === book.title);
+
   return (
     <div>
       <button

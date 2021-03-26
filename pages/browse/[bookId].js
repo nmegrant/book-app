@@ -1,6 +1,7 @@
 import Head from "next/head";
 import AddRemoveBook from "../../components/AddRemoveBook";
 import styles from "../../styles/home.module.css";
+import DisplayQty from "../../components/DisplayQty";
 
 export default function Book({ book }) {
   return (
@@ -25,6 +26,7 @@ export default function Book({ book }) {
           </div>
         </div>
         <AddRemoveBook book={book} />
+        <DisplayQty book={book} />
       </main>
     </div>
   );

@@ -1,6 +1,7 @@
 import AddRemoveBook from "../components/AddRemoveBook";
 import styles from "../styles/home.module.css";
 import Link from "next/link";
+import DisplayQty from "./DisplayQty";
 
 export default function BookCard({
   id,
@@ -31,6 +32,7 @@ export default function BookCard({
         </div>
       </Link>
       <AddRemoveBook book={book} />
+      <DisplayQty book={book} />
     </div>
   );
 }

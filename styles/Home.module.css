@@ -95,6 +95,7 @@
 
 .grid {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
@@ -181,4 +182,23 @@
   background-color: rgba(239, 189, 235, 0.7);
   box-shadow: 0 1px rgb(239, 189, 235);
   transform: translateY(4px);
+}
+
+.tag {
+  border: 1px solid rgb(100, 97, 160);
+  border-radius: 10px;
+  background-color: white;
+  color: rgb(100, 97, 160);
+  text-align: center;
+  display: inline-block;
+  padding: 1px 4px;
+  margin-right: 3px !important;
+  margin-bottom: 3px !important;
+}
+
+.tagContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
 }

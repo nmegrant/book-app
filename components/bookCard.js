@@ -1,4 +1,5 @@
 import AddRemoveBook from "../components/AddRemoveBook";
+import Tag from "./Tag";
 import styles from "../styles/home.module.css";
 import Link from "next/link";
 import DisplayQty from "./DisplayQty";
@@ -8,6 +9,7 @@ export default function BookCard({
   title,
   author,
   description,
+  genre,
   price,
   stock,
   rating,
@@ -19,6 +21,11 @@ export default function BookCard({
         <div>
           <h1>{title}</h1>
           <h5>by {author}</h5>
+          <div>
+            {genre.map((tag) => (
+              <Tag tag={tag} />
+            ))}
+          </div>
           <p>{description}</p>
           <h5>
             price:{" "}

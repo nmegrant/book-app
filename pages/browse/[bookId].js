@@ -1,5 +1,6 @@
 import Head from "next/head";
 import AddRemoveBook from "../../components/AddRemoveBook";
+import Tag from "../../components/Tag";
 import styles from "../../styles/home.module.css";
 import DisplayQty from "../../components/DisplayQty";
 
@@ -13,6 +14,11 @@ export default function Book({ book }) {
         <div className={styles.grid}>
           <h1 className={styles.title}>{book.title}</h1>
           <h5>by {book.author}</h5>
+          <div className={styles.tagContainer}>
+            {book.genre.map((tag) => (
+              <Tag tag={tag} />
+            ))}
+          </div>
           <h3 className={styles.description}>{book.description}</h3>
           <div className={styles.bookInfo}>
             <p>

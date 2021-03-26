@@ -1,6 +1,7 @@
 import Head from "next/head";
 import AddRemoveBook from "../../components/AddRemoveBook";
 import styles from "../../styles/home.module.css";
+import DisplayQty from "../../components/DisplayQty";
 
 export default function Book({ book }) {
   return (
@@ -14,12 +15,18 @@ export default function Book({ book }) {
           <h5>by {book.author}</h5>
           <h3 className={styles.description}>{book.description}</h3>
           <div className={styles.bookInfo}>
-            <p>${book.price}</p>
+            <p>
+              {new Intl.NumberFormat("nl-NL", {
+                style: "currency",
+                currency: "EUR",
+              }).format(book.price)}
+            </p>
             <p>rating: {book.rating}</p>
             <p>stock: {book.stock}</p>
           </div>
         </div>
         <AddRemoveBook book={book} />
+        <DisplayQty book={book} />
       </main>
     </div>
   );

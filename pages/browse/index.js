@@ -5,35 +5,33 @@ import BookCard from "../../components/BookCard";
 
 export default function Browse(props) {
   const [books, setBooks] = useState(props.data || []);
-  const [price, setPrice] = useState(null);
-  const [rating, setRating] = useState(null);
-  const [inStock, setInStock] = useState(null);
+  const [sortedBooks, setSortedBooks] = useState(null);
 
   const handleSortByRating = (event) => {
     if (event.target.value === "none") {
-      setBooks([...books]);
+      setSortedBooks(null);
     } else if (event.target.value === "lowest") {
-      setBooks([...books.sort((a, b) => a.rating - b.rating)]);
+      setSortedBooks([...books.sort((a, b) => a.rating - b.rating)]);
     } else if (event.target.value === "highest") {
-      setBooks([...books.sort((a, b) => b.rating - a.rating)]);
+      setSortedBooks([...books.sort((a, b) => b.rating - a.rating)]);
     }
   };
 
   const handleSortByPrice = (event) => {
     if (event.target.value === "none") {
-      setBooks([...books]);
+      setSortedBooks(null);
     } else if (event.target.value === "lowest") {
-      setBooks([...books.sort((a, b) => a.rating - b.rating)]);
+      setSortedBooks([...books.sort((a, b) => a.rating - b.rating)]);
     } else if (event.target.value === "highest") {
-      setBooks([...books.sort((a, b) => b.rating - a.rating)]);
+      setSortedBooks([...books.sort((a, b) => b.rating - a.rating)]);
     }
   };
 
   const handleSortByInStock = (event) => {
     if (event.target.value === "none") {
-      setBooks([...books]);
+      setSortedBooks(null);
     } else if (event.target.value === "inStock") {
-      setBooks([...books.filter((book) => book.stock > 0)]);
+      setSortedBooks([...books.filter((book) => book.stock > 0)]);
     }
   };
 
@@ -49,7 +47,7 @@ export default function Browse(props) {
         </h3>
         <div className={styles.sortFieldsContainer}>
           <div className={styles.fieldContainer}>
-            <label for="rating">Sort by rating: </label>
+            <label htmlFor="rating">Sort by rating: </label>
             <select name="rating" id="rating" onChange={handleSortByRating}>
               <option value="none">none</option>
               <option value="highest">highest</option>
@@ -57,7 +55,7 @@ export default function Browse(props) {
             </select>
           </div>
           <div className={styles.fieldContainer}>
-            <label for="price">Sort by price: </label>
+            <label htmlFor="price">Sort by price: </label>
             <select name="price" id="price" onChange={handleSortByPrice}>
               <option value="none">none</option>
               <option value="highest">highest</option>
@@ -65,7 +63,7 @@ export default function Browse(props) {
             </select>
           </div>
           <div className={styles.fieldContainer}>
-            <label for="inStock">Sort by in stock: </label>
+            <label htmlFor="inStock">Sort by in stock: </label>
             <select name="inStock" id="inStock" onChange={handleSortByInStock}>
               <option value="none">none</option>
               <option value="inStock">in stock</option>
@@ -74,7 +72,7 @@ export default function Browse(props) {
         </div>
         <div className={styles.grid}>
           {books &&
-            books.map((book) => (
+            (sortedBooks || books).map((book) => (
               <BookCard
                 key={book.id}
                 id={book.id}

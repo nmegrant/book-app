@@ -1,9 +1,26 @@
+import { useState } from "react";
 import Head from "next/head";
 import styles from "../../styles/home.module.css";
 import BookCard from "../../components/BookCard";
 
 export default function Browse(props) {
-  const books = props.data || [];
+  const [books, setBooks] = useState(props.data || []);
+  const [price, setPrice] = useState(null);
+  const [rating, setRating] = useState(null);
+  const [inStock, setInStock] = useState(null);
+
+  const handleSortByRating = (event) => {
+    if (event.target.value === "none") {
+      setBooks([...books]);
+    } else if (event.target.value === "lowest") {
+      setBooks([...books.sort((a, b) => a.rating - b.rating)]);
+    } else if (event.target.value === "highest") {
+      setBooks([...books.sort((a, b) => b.rating - a.rating)]);
+    }
+  };
+
+  console.log(books);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -17,18 +34,14 @@ export default function Browse(props) {
         <div className={styles.sortFieldsContainer}>
           <div className={styles.fieldContainer}>
             <label for="rating">Sort by rating: </label>
-            <select
-              name="rating"
-              id="rating"
-              onChange={(event) => console.log(event.target.value)}
-            >
+            <select name="rating" id="rating" onChange={handleSortByRating}>
               <option value="none">none</option>
               <option value="highest">highest</option>
               <option value="lowest">lowest</option>
             </select>
           </div>
           <div className={styles.fieldContainer}>
-            <label for="price">Sort by rating: </label>
+            <label for="price">Sort by price: </label>
             <select
               name="price"
               id="price"

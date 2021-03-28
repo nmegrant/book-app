@@ -21,9 +21,9 @@ export default function Browse(props) {
     if (event.target.value === "none") {
       setSortedBooks(null);
     } else if (event.target.value === "lowest") {
-      setSortedBooks([...books.sort((a, b) => a.rating - b.rating)]);
+      setSortedBooks([...books.sort((a, b) => a.price - b.price)]);
     } else if (event.target.value === "highest") {
-      setSortedBooks([...books.sort((a, b) => b.rating - a.rating)]);
+      setSortedBooks([...books.sort((a, b) => b.price - a.price)]);
     }
   };
 

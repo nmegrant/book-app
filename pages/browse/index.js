@@ -14,6 +14,25 @@ export default function Browse(props) {
         <h3 className={styles.description}>
           Filter by genre or search by author/title
         </h3>
+        <div>
+          <label for="rating">Sort by rating:</label>
+          <select name="rating" id="rating">
+            <option value="none">none</option>
+            <option value="highest">highest</option>
+            <option value="lowest">lowest</option>
+          </select>
+          <label for="price">Sort by rating:</label>
+          <select name="price" id="price">
+            <option value="none">none</option>
+            <option value="highest">highest</option>
+            <option value="lowest">lowest</option>
+          </select>
+          <label for="inStock">Sort by in stock:</label>
+          <select name="inStock" id="inStock">
+            <option value="none">none</option>
+            <option value="inStock">in stock</option>
+          </select>
+        </div>
         <div className={styles.grid}>
           {books &&
             books.map((book) => (

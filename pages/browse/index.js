@@ -19,7 +19,23 @@ export default function Browse(props) {
     }
   };
 
-  console.log(books);
+  const handleSortByPrice = (event) => {
+    if (event.target.value === "none") {
+      setBooks([...books]);
+    } else if (event.target.value === "lowest") {
+      setBooks([...books.sort((a, b) => a.rating - b.rating)]);
+    } else if (event.target.value === "highest") {
+      setBooks([...books.sort((a, b) => b.rating - a.rating)]);
+    }
+  };
+
+  const handleSortByInStock = (event) => {
+    if (event.target.value === "none") {
+      setBooks([...books]);
+    } else if (event.target.value === "inStock") {
+      setBooks([...books.filter((book) => book.stock > 0)]);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -42,11 +58,7 @@ export default function Browse(props) {
           </div>
           <div className={styles.fieldContainer}>
             <label for="price">Sort by price: </label>
-            <select
-              name="price"
-              id="price"
-              onChange={(event) => console.log(event.target.value)}
-            >
+            <select name="price" id="price" onChange={handleSortByPrice}>
               <option value="none">none</option>
               <option value="highest">highest</option>
               <option value="lowest">lowest</option>
@@ -54,11 +66,7 @@ export default function Browse(props) {
           </div>
           <div className={styles.fieldContainer}>
             <label for="inStock">Sort by in stock: </label>
-            <select
-              name="inStock"
-              id="inStock"
-              onChange={(event) => console.log(event.target.value)}
-            >
+            <select name="inStock" id="inStock" onChange={handleSortByInStock}>
               <option value="none">none</option>
               <option value="inStock">in stock</option>
             </select>

@@ -22,8 +22,8 @@ export default function BookCard({
           <h1>{title}</h1>
           <h5>by {author}</h5>
           <div>
-            {genre.map((tag) => (
-              <Tag tag={tag} />
+            {genre.map((tag, index) => (
+              <Tag key={index} tag={tag} />
             ))}
           </div>
           <p>{description}</p>

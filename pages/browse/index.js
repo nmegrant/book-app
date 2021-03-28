@@ -1,9 +1,40 @@
+import { useState } from "react";
 import Head from "next/head";
 import styles from "../../styles/home.module.css";
 import BookCard from "../../components/BookCard";
 
 export default function Browse(props) {
-  const books = props.data || [];
+  const [books, setBooks] = useState(props.data || []);
+  const [sortedBooks, setSortedBooks] = useState(null);
+
+  const handleSortByRating = (event) => {
+    if (event.target.value === "none") {
+      setSortedBooks(null);
+    } else if (event.target.value === "lowest") {
+      setSortedBooks([...books.sort((a, b) => a.rating - b.rating)]);
+    } else if (event.target.value === "highest") {
+      setSortedBooks([...books.sort((a, b) => b.rating - a.rating)]);
+    }
+  };
+
+  const handleSortByPrice = (event) => {
+    if (event.target.value === "none") {
+      setSortedBooks(null);
+    } else if (event.target.value === "lowest") {
+      setSortedBooks([...books.sort((a, b) => a.price - b.price)]);
+    } else if (event.target.value === "highest") {
+      setSortedBooks([...books.sort((a, b) => b.price - a.price)]);
+    }
+  };
+
+  const handleSortByInStock = (event) => {
+    if (event.target.value === "none") {
+      setSortedBooks(null);
+    } else if (event.target.value === "inStock") {
+      setSortedBooks([...books.filter((book) => book.stock > 0)]);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,9 +45,34 @@ export default function Browse(props) {
         <h3 className={styles.description}>
           Filter by genre or search by author/title
         </h3>
+        <div className={styles.sortFieldsContainer}>
+          <div className={styles.fieldContainer}>
+            <label htmlFor="rating">Sort by rating: </label>
+            <select name="rating" id="rating" onChange={handleSortByRating}>
+              <option value="none">none</option>
+              <option value="highest">highest</option>
+              <option value="lowest">lowest</option>
+            </select>
+          </div>
+          <div className={styles.fieldContainer}>
+            <label htmlFor="price">Sort by price: </label>
+            <select name="price" id="price" onChange={handleSortByPrice}>
+              <option value="none">none</option>
+              <option value="highest">highest</option>
+              <option value="lowest">lowest</option>
+            </select>
+          </div>
+          <div className={styles.fieldContainer}>
+            <label htmlFor="inStock">Sort by in stock: </label>
+            <select name="inStock" id="inStock" onChange={handleSortByInStock}>
+              <option value="none">none</option>
+              <option value="inStock">in stock</option>
+            </select>
+          </div>
+        </div>
         <div className={styles.grid}>
           {books &&
-            books.map((book) => (
+            (sortedBooks || books).map((book) => (
               <BookCard
                 key={book.id}
                 id={book.id}

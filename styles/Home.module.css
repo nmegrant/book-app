@@ -202,3 +202,12 @@
   width: 100%;
   justify-content: center;
 }
+
+.sortFieldsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.fieldContainer {
+  padding: 0 10px 0 10px;
+}

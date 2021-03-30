@@ -5,7 +5,7 @@ const books = [
     author: "Carl Sagan",
     description:
       "The Demon-Haunted World: Science as a Candle in the Dark is a 1995 book by the astrophysicist Carl Sagan, in which the author aims to explain the scientific method to laypeople and to encourage people to learn critical and skeptical thinking.",
-    genre: ["Science", "Non-fic"],
+    genre: ["Science", "Non-Fiction"],
     price: 12.0,
     stock: 2,
     rating: 5,

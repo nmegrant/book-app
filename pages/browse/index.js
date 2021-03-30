@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import styles from "../../styles/home.module.css";
 import BookCard from "../../components/BookCard";
@@ -6,6 +6,23 @@ import BookCard from "../../components/BookCard";
 export default function Browse(props) {
   const [books, setBooks] = useState(props.data || []);
   const [sortedBooks, setSortedBooks] = useState(null);
+  const [genres, setGenres] = useState(props.genreData);
+  const [selectedGenres, setSelectedGenres] = useState([]);
+
+  useEffect(() => {
+    if (selectedGenres.length > 0) {
+      setSortedBooks([
+        ...books.filter(
+          (book) =>
+            selectedGenres.findIndex((gen) => book.genre.includes(gen)) >= 0
+        ),
+      ]);
+    }
+  }, [selectedGenres]);
+
+  const handleFilterByGenre = (event) => {
+    setSelectedGenres([...selectedGenres, event.target.value]);
+  };
 
   const handleSortByRating = (event) => {
     if (event.target.value === "none") {
@@ -69,6 +86,16 @@ export default function Browse(props) {
               <option value="inStock">in stock</option>
             </select>
           </div>
+          <div className={styles.fieldContainer}>
+            <label htmlFor="genres">Genres: </label>
+            <select name="genres" id="genres" onChange={handleFilterByGenre}>
+              {genres.map((genre, index) => (
+                <option key={index} value={genre}>
+                  {genre}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className={styles.grid}>
           {books &&
@@ -95,6 +122,9 @@ export async function getStaticProps() {
   const res = await fetch(`http://localhost:3000/api/books`);
   const data = await res.json();
 
+  const res2 = await fetch(`http://localhost:3000/api/genres`);
+  const genreData = await res2.json();
+
   if (!data) {
     return {
       notFound: true,
@@ -102,6 +132,6 @@ export async function getStaticProps() {
   }
 
   return {
-    props: { data },
+    props: { data, genreData },
   };
 }

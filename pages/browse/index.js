@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import styles from "../../styles/home.module.css";
 import BookCard from "../../components/BookCard";
+import GenreButton from "../../components/GenreButton";
 
 export default function Browse(props) {
   const [books, setBooks] = useState(props.data || []);
@@ -17,6 +18,8 @@ export default function Browse(props) {
             selectedGenres.findIndex((gen) => book.genre.includes(gen)) >= 0
         ),
       ]);
+    } else {
+      setSortedBooks([...books]);
     }
   }, [selectedGenres]);
 
@@ -50,6 +53,10 @@ export default function Browse(props) {
     } else if (event.target.value === "inStock") {
       setSortedBooks([...books.filter((book) => book.stock > 0)]);
     }
+  };
+
+  const handleRemoveGenre = (genre) => {
+    setSelectedGenres([...selectedGenres.filter((gen) => gen != genre)]);
   };
 
   return (
@@ -87,7 +94,7 @@ export default function Browse(props) {
             </select>
           </div>
           <div className={styles.fieldContainer}>
-            <label htmlFor="genres">Genres: </label>
+            <label htmlFor="genres">Filter by genre: </label>
             <select name="genres" id="genres" onChange={handleFilterByGenre}>
               {genres.map((genre, index) => (
                 <option key={index} value={genre}>
@@ -95,6 +102,16 @@ export default function Browse(props) {
                 </option>
               ))}
             </select>
+          </div>
+          <div className={styles.fieldContainer}>
+            {selectedGenres &&
+              selectedGenres.map((genre, index) => (
+                <GenreButton
+                  key={index}
+                  genre={genre}
+                  handleRemoveGenre={handleRemoveGenre}
+                />
+              ))}
           </div>
         </div>
         <div className={styles.grid}>

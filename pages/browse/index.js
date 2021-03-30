@@ -18,6 +18,8 @@ export default function Browse(props) {
             selectedGenres.findIndex((gen) => book.genre.includes(gen)) >= 0
         ),
       ]);
+    } else {
+      setSortedBooks([...books]);
     }
   }, [selectedGenres]);
 
@@ -53,8 +55,8 @@ export default function Browse(props) {
     }
   };
 
-  const handleRemoveGenre = () => {
-    console.log("Clicked!");
+  const handleRemoveGenre = (genre) => {
+    setSelectedGenres([...selectedGenres.filter((gen) => gen != genre)]);
   };
 
   return (

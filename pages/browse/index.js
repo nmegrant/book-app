@@ -95,6 +95,7 @@ export default function Browse(props) {
                 </option>
               ))}
             </select>
+            {selectedGenres && selectedGenres.map((genre) => <p>{genre}</p>)}
           </div>
         </div>
         <div className={styles.grid}>

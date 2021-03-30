@@ -53,6 +53,10 @@ export default function Browse(props) {
     }
   };
 
+  const handleRemoveGenre = () => {
+    console.log("Clicked!");
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -99,7 +103,13 @@ export default function Browse(props) {
           </div>
           <div className={styles.fieldContainer}>
             {selectedGenres &&
-              selectedGenres.map((genre) => <GenreButton genre={genre} />)}
+              selectedGenres.map((genre, index) => (
+                <GenreButton
+                  key={index}
+                  genre={genre}
+                  handleRemoveGenre={handleRemoveGenre}
+                />
+              ))}
           </div>
         </div>
         <div className={styles.grid}>

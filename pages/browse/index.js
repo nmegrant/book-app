@@ -87,7 +87,7 @@ export default function Browse(props) {
             </select>
           </div>
           <div className={styles.fieldContainer}>
-            <label htmlFor="genres">Genres: </label>
+            <label htmlFor="genres">Filter by genre: </label>
             <select name="genres" id="genres" onChange={handleFilterByGenre}>
               {genres.map((genre, index) => (
                 <option key={index} value={genre}>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import styles from "../../styles/home.module.css";
 import BookCard from "../../components/BookCard";
+import GenreButton from "../../components/GenreButton";
 
 export default function Browse(props) {
   const [books, setBooks] = useState(props.data || []);
@@ -95,7 +96,10 @@ export default function Browse(props) {
                 </option>
               ))}
             </select>
-            {selectedGenres && selectedGenres.map((genre) => <p>{genre}</p>)}
+          </div>
+          <div className={styles.fieldContainer}>
+            {selectedGenres &&
+              selectedGenres.map((genre) => <GenreButton genre={genre} />)}
           </div>
         </div>
         <div className={styles.grid}>

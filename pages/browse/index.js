@@ -6,6 +6,9 @@ import BookCard from "../../components/BookCard";
 export default function Browse(props) {
   const [books, setBooks] = useState(props.data || []);
   const [sortedBooks, setSortedBooks] = useState(null);
+  const [genres, setGenres] = useState(props.genreData);
+
+  console.log(genres);
 
   const handleSortByRating = (event) => {
     if (event.target.value === "none") {
@@ -69,6 +72,18 @@ export default function Browse(props) {
               <option value="inStock">in stock</option>
             </select>
           </div>
+          <div className={styles.fieldContainer}>
+            <label htmlFor="genres">Genres: </label>
+            <select
+              name="genres"
+              id="genres"
+              onChange={(event) => console.log(event.target.value)}
+            >
+              {genres.map((genre) => (
+                <option value={genre}>{genre}</option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className={styles.grid}>
           {books &&
@@ -95,6 +110,9 @@ export async function getStaticProps() {
   const res = await fetch(`http://localhost:3000/api/books`);
   const data = await res.json();
 
+  const res2 = await fetch(`http://localhost:3000/api/genres`);
+  const genreData = await res2.json();
+
   if (!data) {
     return {
       notFound: true,
@@ -102,6 +120,6 @@ export async function getStaticProps() {
   }
 
   return {
-    props: { data },
+    props: { data, genreData },
   };
 }

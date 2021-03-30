@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import styles from "../../styles/home.module.css";
 import BookCard from "../../components/BookCard";
@@ -7,8 +7,22 @@ export default function Browse(props) {
   const [books, setBooks] = useState(props.data || []);
   const [sortedBooks, setSortedBooks] = useState(null);
   const [genres, setGenres] = useState(props.genreData);
+  const [selectedGenres, setSelectedGenres] = useState([]);
 
-  console.log(genres);
+  useEffect(() => {
+    if (selectedGenres.length > 0) {
+      setSortedBooks([
+        ...books.filter(
+          (book) =>
+            selectedGenres.findIndex((gen) => book.genre.includes(gen)) >= 0
+        ),
+      ]);
+    }
+  }, [selectedGenres]);
+
+  const handleFilterByGenre = (event) => {
+    setSelectedGenres([...selectedGenres, event.target.value]);
+  };
 
   const handleSortByRating = (event) => {
     if (event.target.value === "none") {
@@ -74,13 +88,11 @@ export default function Browse(props) {
           </div>
           <div className={styles.fieldContainer}>
             <label htmlFor="genres">Genres: </label>
-            <select
-              name="genres"
-              id="genres"
-              onChange={(event) => console.log(event.target.value)}
-            >
-              {genres.map((genre) => (
-                <option value={genre}>{genre}</option>
+            <select name="genres" id="genres" onChange={handleFilterByGenre}>
+              {genres.map((genre, index) => (
+                <option key={index} value={genre}>
+                  {genre}
+                </option>
               ))}
             </select>
           </div>

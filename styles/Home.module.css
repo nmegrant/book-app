@@ -217,7 +217,7 @@
   border: solid 1px rgb(49, 76, 182);
   border-radius: 5px;
   font: rgb(49, 76, 182);
-  margin: 2px;
+  margin: 5px 2px;
 }
 
 .genreButton:hover {

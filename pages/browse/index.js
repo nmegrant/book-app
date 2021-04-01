@@ -103,16 +103,16 @@ export default function Browse(props) {
               ))}
             </select>
           </div>
-          <div className={styles.fieldContainer}>
-            {selectedGenres &&
-              selectedGenres.map((genre, index) => (
-                <GenreButton
-                  key={index}
-                  genre={genre}
-                  handleRemoveGenre={handleRemoveGenre}
-                />
-              ))}
-          </div>
+        </div>
+        <div className={styles.fieldContainer}>
+          {selectedGenres &&
+            selectedGenres.map((genre, index) => (
+              <GenreButton
+                key={index}
+                genre={genre}
+                handleRemoveGenre={handleRemoveGenre}
+              />
+            ))}
         </div>
         <div className={styles.grid}>
           {books &&

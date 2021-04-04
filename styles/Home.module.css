@@ -110,7 +110,7 @@
   justify-content: center;
   flex-wrap: wrap;
   min-height: 600px;
-  min-width: 600px;
+  min-width: 900px;
   max-width: 800px;
   margin-top: 3rem;
 }
@@ -237,6 +237,15 @@
   border: solid 1px rgb(239, 189, 235);
   font: rgb(49, 76, 182);
   transition: color 0.75s ease, background-color 0.75s ease;
+}
+
+.chevron {
+  background-color: transparent;
+  font-size: 44px;
+  font-weight: bolder;
+  color: rgb(100, 97, 160);
+  border: none;
+  padding: 10px;
 }
 
 /* // 239, 189, 235 Pink lavender

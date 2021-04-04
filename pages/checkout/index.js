@@ -14,7 +14,14 @@ const Basket = ({ books }) => (
   </div>
 );
 
-const Address = () => <h1>Enter your info and address</h1>;
+const Address = () => (
+  <div className={styles.smcontainer}>
+    <h1>Enter your info and shipping address</h1>
+    <form>
+      <input />
+    </form>
+  </div>
+);
 
 export default function Checkout() {
   const { state, dispatch } = useContext(CheckOutContext);
@@ -43,7 +50,7 @@ export default function Checkout() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Checkout</h1>
-        <button onClick={handleLeftClick}>Left</button>
+
         <div className={styles.checkoutgrid}>
           {state.books.length === 0 && (
             <>
@@ -57,10 +64,19 @@ export default function Checkout() {
               </p>
             </>
           )}
+          {state.books.length > 0 && address && (
+            <button className={styles.chevron} onClick={handleLeftClick}>
+              {"\u2039"}
+            </button>
+          )}
           {state.books.length > 0 && basket && <Basket books={state.books} />}
           {state.books.length > 0 && address && <Address />}
+          {state.books.length > 0 && basket && (
+            <button className={styles.chevron} onClick={handleRightClick}>
+              {"\u203A"}
+            </button>
+          )}
         </div>
-        <button onClick={handleRightClick}>Right</button>
       </main>
     </div>
   );

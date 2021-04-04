@@ -103,6 +103,18 @@
   margin-top: 3rem;
 }
 
+.checkoutgrid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 600px;
+  min-width: 900px;
+  max-width: 800px;
+  margin-top: 3rem;
+}
+
 .card {
   margin: 1rem;
   flex-basis: 45%;
@@ -225,6 +237,43 @@
   border: solid 1px rgb(239, 189, 235);
   font: rgb(49, 76, 182);
   transition: color 0.75s ease, background-color 0.75s ease;
+}
+
+.chevron {
+  background-color: transparent;
+  font-size: 44px;
+  font-weight: bolder;
+  color: rgb(100, 97, 160);
+  border: none;
+  padding: 10px;
+}
+
+.submitButton {
+  border: solid 1px rgb(49, 76, 182);
+  color: rgb(239, 189, 235);
+  font-weight: bold;
+  background-color: rgb(49, 76, 182);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.formStyle {
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldContainer {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.field {
+  padding: 5px 5px;
+}
+
+.label {
+  padding-right: 5px;
 }
 
 /* // 239, 189, 235 Pink lavender

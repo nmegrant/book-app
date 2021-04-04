@@ -14,12 +14,122 @@ const Basket = ({ books }) => (
   </div>
 );
 
-const Address = () => <h1>Enter your info and address</h1>;
+const Address = () => {
+  const { state, dispatch } = useContext(CheckOutContext);
+  const [userInfo, setUserInfo] = useState({
+    ...state.userInfo,
+  });
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
+  };
+
+  const onHandleSubmit = (event) => {
+    event.preventDefault();
+    dispatch({ type: "ADD_USERINFO", payload: userInfo });
+    console.log(userInfo);
+  };
+
+  return (
+    <div className={styles.smcontainer}>
+      <h4>Enter your info and shipping address</h4>
+      <form
+        onSubmit={(event) => onHandleSubmit(event)}
+        className={styles.formStyle}
+      >
+        <div className={styles.fieldContainer}>
+          <div className={styles.field}>
+            <label htmlFor="name" className={styles.label}>
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={userInfo.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.field}>
+            <label htmlFor="email" className={styles.label}>
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={userInfo.email}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className={styles.fieldContainer}>
+          <div className={styles.field}>
+            <label htmlFor="street" className={styles.label}>
+              Street
+            </label>
+            <input
+              type="text"
+              id="street"
+              name="street"
+              value={userInfo.street}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.field}>
+            <label htmlFor="postalcode" className={styles.label}>
+              Postal Code
+            </label>
+            <input
+              type="text"
+              id="postalcode"
+              name="postalcode"
+              value={userInfo.postalcode}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className={styles.fieldContainer}>
+          <div className={styles.field}>
+            <label htmlFor="country" className={styles.label}>
+              Country
+            </label>
+            <input
+              type="text"
+              id="country"
+              name="country"
+              value={userInfo.country}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.field}>
+            <input className={styles.submitButton} type="submit" />
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+};
 
 export default function Checkout() {
   const { state, dispatch } = useContext(CheckOutContext);
   const [basket, setBasket] = useState(true);
   const [address, setAddress] = useState(false);
+
+  const handleLeftClick = () => {
+    if (address) {
+      setAddress(false);
+      setBasket(true);
+    }
+  };
+
+  const handleRightClick = () => {
+    if (basket) {
+      setBasket(false);
+      setAddress(true);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -29,8 +139,9 @@ export default function Checkout() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Checkout</h1>
-        <div className={styles.grid}>
-          {state.length === 0 && (
+
+        <div className={styles.checkoutgrid}>
+          {state.books.length === 0 && (
             <>
               <h3>You have no books in your basket.</h3>
               <p>
@@ -42,8 +153,18 @@ export default function Checkout() {
               </p>
             </>
           )}
-          {state.length > 0 && basket && <Basket books={state} />}
-          {state.length > 0 && address && <Address />}
+          {state.books.length > 0 && address && (
+            <button className={styles.chevron} onClick={handleLeftClick}>
+              {"\u2039"}
+            </button>
+          )}
+          {state.books.length > 0 && basket && <Basket books={state.books} />}
+          {state.books.length > 0 && address && <Address />}
+          {state.books.length > 0 && basket && (
+            <button className={styles.chevron} onClick={handleRightClick}>
+              {"\u203A"}
+            </button>
+          )}
         </div>
       </main>
     </div>

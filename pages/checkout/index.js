@@ -34,48 +34,79 @@ const Address = () => {
   return (
     <div className={styles.smcontainer}>
       <h4>Enter your info and shipping address</h4>
-      <form onSubmit={(event) => onHandleSubmit(event)}>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={userInfo.name}
-          onChange={handleChange}
-        />
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={userInfo.email}
-          onChange={handleChange}
-        />
-        <label htmlFor="street">Street</label>
-        <input
-          type="text"
-          id="street"
-          name="street"
-          value={userInfo.street}
-          onChange={handleChange}
-        />
-        <label htmlFor="postalcode">Postal Code</label>
-        <input
-          type="text"
-          id="postalcode"
-          name="postalcode"
-          value={userInfo.postalcode}
-          onChange={handleChange}
-        />
-        <label htmlFor="country">Country</label>
-        <input
-          type="text"
-          id="country"
-          name="country"
-          value={userInfo.country}
-          onChange={handleChange}
-        />
-        <input className={styles.submitButton} type="submit" />
+      <form
+        onSubmit={(event) => onHandleSubmit(event)}
+        className={styles.formStyle}
+      >
+        <div className={styles.fieldContainer}>
+          <div className={styles.field}>
+            <label htmlFor="name" className={styles.label}>
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={userInfo.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.field}>
+            <label htmlFor="email" className={styles.label}>
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={userInfo.email}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className={styles.fieldContainer}>
+          <div className={styles.field}>
+            <label htmlFor="street" className={styles.label}>
+              Street
+            </label>
+            <input
+              type="text"
+              id="street"
+              name="street"
+              value={userInfo.street}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.field}>
+            <label htmlFor="postalcode" className={styles.label}>
+              Postal Code
+            </label>
+            <input
+              type="text"
+              id="postalcode"
+              name="postalcode"
+              value={userInfo.postalcode}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className={styles.fieldContainer}>
+          <div className={styles.field}>
+            <label htmlFor="country" className={styles.label}>
+              Country
+            </label>
+            <input
+              type="text"
+              id="country"
+              name="country"
+              value={userInfo.country}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.field}>
+            <input className={styles.submitButton} type="submit" />
+          </div>
+        </div>
       </form>
     </div>
   );

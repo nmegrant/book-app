@@ -257,6 +257,25 @@
   border-radius: 5px;
 }
 
+.formStyle {
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldContainer {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.field {
+  padding: 5px 5px;
+}
+
+.label {
+  padding-right: 5px;
+}
+
 /* // 239, 189, 235 Pink lavender
 // 182, 140, 184 African violet
 // 100, 97, 160 Dark blue grey

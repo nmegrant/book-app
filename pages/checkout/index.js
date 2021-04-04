@@ -15,31 +15,75 @@ const Basket = ({ books }) => (
 );
 
 const Address = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [street, setStreet] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [country, setCountry] = useState("");
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    email: "",
+    street: "",
+    postalcode: "",
+    country: "",
+  });
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
+  };
 
   const onHandleSubmit = (event) => {
     event.preventDefault();
-    console.log("submit");
+    console.log(userInfo);
+    setUserInfo({
+      name: "",
+      email: "",
+      street: "",
+      postalcode: "",
+      country: "",
+    });
   };
 
   return (
     <div className={styles.smcontainer}>
-      <h1>Enter your info and shipping address</h1>
+      <h4>Enter your info and shipping address</h4>
       <form onSubmit={(event) => onHandleSubmit(event)}>
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={userInfo.name}
+          onChange={handleChange}
+        />
         <label htmlFor="email">Email</label>
-        <input type="email" id="email" />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={userInfo.email}
+          onChange={handleChange}
+        />
         <label htmlFor="street">Street</label>
-        <input type="text" id="street" />
+        <input
+          type="text"
+          id="street"
+          name="street"
+          value={userInfo.street}
+          onChange={handleChange}
+        />
         <label htmlFor="postalcode">Postal Code</label>
-        <input type="text" id="postalcode" />
+        <input
+          type="text"
+          id="postalcode"
+          name="postalcode"
+          value={userInfo.postalcode}
+          onChange={handleChange}
+        />
         <label htmlFor="country">Country</label>
-        <input type="text" id="country" />
+        <input
+          type="text"
+          id="country"
+          name="country"
+          value={userInfo.country}
+          onChange={handleChange}
+        />
         <input className={styles.submitButton} type="submit" />
       </form>
     </div>

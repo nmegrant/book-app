@@ -1,4 +1,7 @@
-export const initialState = { books: [], userInfo: {} };
+export const initialState = {
+  books: [],
+  userInfo: { name: "", email: "", street: "", postalcode: "", country: "" },
+};
 
 export function checkoutReducer(state, action) {
   switch (action.type) {

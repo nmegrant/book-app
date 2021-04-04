@@ -21,6 +21,20 @@ export default function Checkout() {
   const [basket, setBasket] = useState(true);
   const [address, setAddress] = useState(false);
 
+  const handleLeftClick = () => {
+    if (address) {
+      setAddress(false);
+      setBasket(true);
+    }
+  };
+
+  const handleRightClick = () => {
+    if (basket) {
+      setBasket(false);
+      setAddress(true);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -29,8 +43,9 @@ export default function Checkout() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Checkout</h1>
-        <div className={styles.grid}>
-          {state.length === 0 && (
+        <button onClick={handleLeftClick}>Left</button>
+        <div className={styles.checkoutgrid}>
+          {state.books.length === 0 && (
             <>
               <h3>You have no books in your basket.</h3>
               <p>
@@ -42,9 +57,10 @@ export default function Checkout() {
               </p>
             </>
           )}
-          {state.length > 0 && basket && <Basket books={state} />}
-          {state.length > 0 && address && <Address />}
+          {state.books.length > 0 && basket && <Basket books={state.books} />}
+          {state.books.length > 0 && address && <Address />}
         </div>
+        <button onClick={handleRightClick}>Right</button>
       </main>
     </div>
   );

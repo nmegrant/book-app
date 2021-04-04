@@ -103,6 +103,18 @@
   margin-top: 3rem;
 }
 
+.checkoutgrid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 600px;
+  min-width: 600px;
+  max-width: 800px;
+  margin-top: 3rem;
+}
+
 .card {
   margin: 1rem;
   flex-basis: 45%;

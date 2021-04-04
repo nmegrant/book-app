@@ -14,9 +14,12 @@ const Basket = ({ books }) => (
   </div>
 );
 
+const Address = () => <h1>Enter your info and address</h1>;
+
 export default function Checkout() {
   const { state, dispatch } = useContext(CheckOutContext);
   const [basket, setBasket] = useState(true);
+  const [address, setAddress] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -40,6 +43,7 @@ export default function Checkout() {
             </>
           )}
           {state.length > 0 && basket && <Basket books={state} />}
+          {state.length > 0 && address && <Address />}
         </div>
       </main>
     </div>

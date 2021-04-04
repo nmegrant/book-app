@@ -14,14 +14,37 @@ const Basket = ({ books }) => (
   </div>
 );
 
-const Address = () => (
-  <div className={styles.smcontainer}>
-    <h1>Enter your info and shipping address</h1>
-    <form>
-      <input />
-    </form>
-  </div>
-);
+const Address = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [street, setStreet] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [country, setCountry] = useState("");
+
+  const onHandleSubmit = (event) => {
+    event.preventDefault();
+    console.log("submit");
+  };
+
+  return (
+    <div className={styles.smcontainer}>
+      <h1>Enter your info and shipping address</h1>
+      <form onSubmit={(event) => onHandleSubmit(event)}>
+        <label htmlFor="name">Name</label>
+        <input type="text" id="name" />
+        <label htmlFor="email">Email</label>
+        <input type="email" id="email" />
+        <label htmlFor="street">Street</label>
+        <input type="text" id="street" />
+        <label htmlFor="postalcode">Postal Code</label>
+        <input type="text" id="postalcode" />
+        <label htmlFor="country">Country</label>
+        <input type="text" id="country" />
+        <input className={styles.submitButton} type="submit" />
+      </form>
+    </div>
+  );
+};
 
 export default function Checkout() {
   const { state, dispatch } = useContext(CheckOutContext);

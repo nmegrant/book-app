@@ -248,6 +248,15 @@
   padding: 10px;
 }
 
+.submitButton {
+  border: solid 1px rgb(49, 76, 182);
+  color: rgb(239, 189, 235);
+  font-weight: bold;
+  background-color: rgb(49, 76, 182);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
 /* // 239, 189, 235 Pink lavender
 // 182, 140, 184 African violet
 // 100, 97, 160 Dark blue grey

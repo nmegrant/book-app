@@ -1,12 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CheckOutContext } from "../../state/CheckOutContext";
 import CheckoutItem from "../../components/CheckoutItem";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/home.module.css";
 
+const Basket = ({ books }) => (
+  <div className={styles.smcontainer}>
+    <h3>Your basket</h3>
+    {books.map((book) => (
+      <CheckoutItem key={book.id} book={book} />
+    ))}
+  </div>
+);
+
 export default function Checkout() {
   const { state, dispatch } = useContext(CheckOutContext);
+  const [basket, setBasket] = useState(true);
 
   return (
     <div className={styles.container}>
@@ -29,14 +39,7 @@ export default function Checkout() {
               </p>
             </>
           )}
-          {state.length > 0 && (
-            <div className={styles.smcontainer}>
-              <h3>Your basket</h3>
-              {state.map((book) => (
-                <CheckoutItem key={book.id} book={book} />
-              ))}
-            </div>
-          )}
+          {state.length > 0 && basket && <Basket books={state} />}
         </div>
       </main>
     </div>

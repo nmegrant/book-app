@@ -24,3 +24,18 @@ export default function AddRemoveBook({ book }) {
     </div>
   );
 }
+
+export async function getStaticProps(props) {
+  const res = await fetch(`http://localhost:3000/api/stock`);
+  const data = await res.json();
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { data },
+  };
+}

@@ -15,12 +15,9 @@ const Basket = ({ books }) => (
 );
 
 const Address = () => {
+  const { state, dispatch } = useContext(CheckOutContext);
   const [userInfo, setUserInfo] = useState({
-    name: "",
-    email: "",
-    street: "",
-    postalcode: "",
-    country: "",
+    ...state.userInfo,
   });
 
   const handleChange = (event) => {
@@ -30,14 +27,8 @@ const Address = () => {
 
   const onHandleSubmit = (event) => {
     event.preventDefault();
+    dispatch({ type: "ADD_USERINFO", payload: userInfo });
     console.log(userInfo);
-    setUserInfo({
-      name: "",
-      email: "",
-      street: "",
-      postalcode: "",
-      country: "",
-    });
   };
 
   return (

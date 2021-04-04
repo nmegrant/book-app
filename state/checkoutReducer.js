@@ -5,7 +5,7 @@ export const initialState = {
 
 export function checkoutReducer(state, action) {
   switch (action.type) {
-    case "ADD":
+    case "ADD_BOOK":
       const checkForbookIndex = state.books.findIndex(
         (stateBook) => stateBook.title === action.payload.title
       );
@@ -20,7 +20,7 @@ export function checkoutReducer(state, action) {
         ...state,
         books: [...state.books, { ...action.payload, quantity: 1 }],
       };
-    case "REMOVE":
+    case "REMOVE_BOOK":
       const newState = [...state.books].map((book) => {
         if (book.title === action.payload.title) {
           return { ...book, quantity: book.quantity - 1 };
@@ -29,6 +29,11 @@ export function checkoutReducer(state, action) {
       });
       const finalState = [...newState].filter((book) => book.quantity > 0);
       return { state, books: [...finalState] };
+    case "ADD_USERINFO":
+      return {
+        ...state,
+        userInfo: { ...action.payload },
+      };
     default:
       return state;
   }

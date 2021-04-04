@@ -12,13 +12,13 @@ export default function AddRemoveBook({ book }) {
   return (
     <div>
       <button
-        onClick={() => dispatch({ type: "ADD", payload: book })}
+        onClick={() => dispatch({ type: "ADD_BOOK", payload: book })}
         className={styles.counterbutton}
       >
         Add Book
       </button>
       <button
-        onClick={() => dispatch({ type: "REMOVE", payload: book })}
+        onClick={() => dispatch({ type: "REMOVE_BOOK", payload: book })}
         className={styles.counterbutton}
       >
         Remove Book

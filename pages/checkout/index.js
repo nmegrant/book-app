@@ -3,7 +3,30 @@ import { CheckOutContext } from "../../state/CheckOutContext";
 import CheckoutItem from "../../components/CheckoutItem";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styles from "../../styles/home.module.css";
+
+const Purchase = () => {
+  const router = useRouter();
+
+  const handleOnClick = (event) => {
+    event.preventDefault();
+    router.push("/purchase-complete");
+  };
+
+  const { state, dispatch } = useContext(CheckOutContext);
+  return (
+    <div>
+      <h3>Complete Your Purchase</h3>
+      <h5>
+        Review our purchase and shipping information, then complete the purchase
+      </h5>
+      <button onClick={handleOnClick} className={styles.purchaseButton}>
+        Complete My Purchase
+      </button>
+    </div>
+  );
+};
 
 const Basket = ({ books }) => (
   <div className={styles.smcontainer}>
@@ -116,11 +139,15 @@ export default function Checkout() {
   const { state, dispatch } = useContext(CheckOutContext);
   const [basket, setBasket] = useState(true);
   const [address, setAddress] = useState(false);
+  const [purchase, setPurchase] = useState(false);
 
   const handleLeftClick = () => {
     if (address) {
       setAddress(false);
       setBasket(true);
+    } else if (purchase) {
+      setAddress(true);
+      setPurchase(false);
     }
   };
 
@@ -128,6 +155,9 @@ export default function Checkout() {
     if (basket) {
       setBasket(false);
       setAddress(true);
+    } else if (address) {
+      setAddress(false);
+      setPurchase(true);
     }
   };
 
@@ -153,14 +183,15 @@ export default function Checkout() {
               </p>
             </>
           )}
-          {state.books.length > 0 && address && (
+          {state.books.length > 0 && (address || purchase) && (
             <button className={styles.chevron} onClick={handleLeftClick}>
               {"\u2039"}
             </button>
           )}
           {state.books.length > 0 && basket && <Basket books={state.books} />}
           {state.books.length > 0 && address && <Address />}
-          {state.books.length > 0 && basket && (
+          {state.books.length > 0 && purchase && <Purchase />}
+          {state.books.length > 0 && (basket || address) && (
             <button className={styles.chevron} onClick={handleRightClick}>
               {"\u203A"}
             </button>

@@ -3,9 +3,17 @@ import { CheckOutContext } from "../../state/CheckOutContext";
 import CheckoutItem from "../../components/CheckoutItem";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styles from "../../styles/home.module.css";
 
 const Purchase = () => {
+  const router = useRouter();
+
+  const handleOnClick = (event) => {
+    event.preventDefault();
+    router.push("/purchase-complete");
+  };
+
   const { state, dispatch } = useContext(CheckOutContext);
   return (
     <div>
@@ -13,7 +21,9 @@ const Purchase = () => {
       <h5>
         Review our purchase and shipping information, then complete the purchase
       </h5>
-      <button className={styles.purchaseButton}>Complete My Purchase</button>
+      <button onClick={handleOnClick} className={styles.purchaseButton}>
+        Complete My Purchase
+      </button>
     </div>
   );
 };

@@ -277,6 +277,14 @@
   padding-right: 5px;
 }
 
+.purchaseButton {
+  background-color: rgba(182, 140, 184, 0.2);
+  border: solid 2px rgb(49, 76, 182);
+  color: rgb(49, 76, 182);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
 /* // 239, 189, 235 Pink lavender
 // 182, 140, 184 African violet
 // 100, 97, 160 Dark blue grey

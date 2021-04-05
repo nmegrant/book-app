@@ -1,9 +1,9 @@
 import styles from "../styles/home.module.css";
 
-export default function Genre({ genre }) {
+export default function Genre({ gen }) {
   return (
-    <p key={genre} className={styles.genre}>
-      {genre}
+    <p key={gen} className={styles.genre}>
+      {gen}
     </p>
   );
 }
